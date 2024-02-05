@@ -1,6 +1,8 @@
 VENV = venv
-PYTHON = $(VENV)/bin/python3
+PYTHON = $(VENV)/bin/python
 PIP = $(VENV)/bin/pip
+
+ACTIVATE = . $(VENV)/bin/activate &&
 
 $(VENV)/bin/activate: requirements.txt
 	@echo "Creating virtual environment"
@@ -9,13 +11,12 @@ $(VENV)/bin/activate: requirements.txt
 	touch $(VENV)/bin/activate
 
 run: $(VENV)/bin/activate
-	@echo "Activating virtual environment"
-	. $(VENV)/bin/activate && $(PYTHON) app.py
+	@echo "Activating virtual environment and running app.py"
+	$(ACTIVATE) $(PYTHON) app.py
 
 streamlit: $(VENV)/bin/activate
-  @echo "Activating virtual environment"
-  . $(VENV)/bin/activate && streamlit run app.py
-
+	@echo "Activating virtual environment and running Streamlit"
+	$(ACTIVATE) streamlit run ui.py
 
 clean:
 	@echo "Cleaning up"
