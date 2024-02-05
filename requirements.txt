@@ -1,0 +1,12 @@
+fastapi
+pandas
+numpy
+langchain
+langchain-community
+fastapi
+uvicorn
+python-dotenv
+python-multipart
+pillow
+ipython
+streamlit
